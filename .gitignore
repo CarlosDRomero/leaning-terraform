@@ -1,0 +1,4 @@
+# Ignorados base
+**/.terraform
+**/*.lock.hcl
+**/*.tfstate*
