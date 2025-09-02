@@ -23,3 +23,30 @@ resource "aws_route_table" "route_table" {
       gateway_id = aws_internet_gateway.gateway.id
   }
 }
+resource "aws_instance" "nginx_server" {
+  ami = "ami-0cfde0ea8edd312d4"
+  instance_type = "t3.micro"
+  user_data = file("userdata.sh")
+  vpc_security_group_ids = [aws_security_group.nginx_sg.id]
+}
+resource "aws_security_group" "nginx_sg" {
+  ingress {
+    to_port = 80
+    from_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    to_port = 443
+    from_port = 443
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    to_port = 0
+    from_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
