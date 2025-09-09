@@ -3,11 +3,11 @@ resource "aws_instance" "ec2" {
   instance_type = var.ec2_instance_type
   root_block_device {
     delete_on_termination = true
-    volume_type           = var.volume_type
-    volume_size           = var.volume_size
+    volume_type           = var.ec2_configuration.type
+    volume_size           = var.ec2_configuration.size
   }
   tags = {
-    Name = "ubuntu-ec2-${var.aws_region}"
+    Name = "ubuntu-ec2"
     Env  = "Test"
   }
 }
