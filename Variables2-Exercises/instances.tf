@@ -5,6 +5,7 @@ resource "aws_instance" "public_ec2" {
 
   key_name = data.aws_key_pair.ec2key.key_name
 
+  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   tags = {
     Name = "PUBLIC_EC2"
   }
