@@ -22,3 +22,8 @@ variable "ec2_configuration" {
   description = "Configuraciones para las instancias ec2"
 
 }
+
+variable "allowed_ports" {
+  type = list(number)
+  description = "Una lista de los puertos permitidos para ingress en el security group"
+}

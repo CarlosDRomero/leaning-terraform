@@ -5,3 +5,4 @@ ec2_configuration = {
   ami = "ami-0657db37a458d2230"
   instance_type = "t3.micro"
 }
+allowed_ports = [ 22, 80, 443 ]
